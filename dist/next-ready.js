@@ -6,11 +6,12 @@
   var DOM_LOADED = 'DOMContentLoaded';
 
   nx.ready = function (inCallback) {
+    var callback = inCallback || nx.noop;
     if (readyRE.test(document.readyState) && document.body) {
-      inCallback();
+      callback();
     } else {
       document.addEventListener(DOM_LOADED, function () {
-        inCallback();
+        callback();
       }, false);
     }
   };
